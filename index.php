@@ -16,12 +16,17 @@ require_once "config/database.php";
             <div class="logo">
                 <h1>Manual da CM</h1>
             </div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
             <ul class="nav-links">
-                <li><a href="index.php">Início</a></li>
                 <li><a href="oracoes.php">Orações</a></li>
                 <li><a href="ritos.php">Ritos</a></li>
+                <li><a href="formacao.php">Formação</a></li>
                 <li><a href="documentos.php">Documentos</a></li>
-                <li><a href="biblioteca.php">Biblioteca</a></li>
+                <li><a href="hinario.php">Hinário</a></li>
             </ul>
         </nav>
     </header>
@@ -61,5 +66,12 @@ require_once "config/database.php";
             <p>&copy; <?php echo date("Y"); ?> Manual da CM - Todos os direitos reservados</p>
         </div>
     </footer>
+
+    <script>
+        document.querySelector('.hamburger').addEventListener('click', function() {
+            this.classList.toggle('active');
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+    </script>
 </body>
 </html>

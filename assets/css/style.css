@@ -29,6 +29,9 @@ header {
     background-color: var(--primary-color);
     padding: 1rem 0;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
 }
 
 .main-nav {
@@ -43,6 +46,44 @@ header {
 .logo h1 {
     color: var(--white);
     font-size: 1.5rem;
+}
+
+/* Hamburger Menu */
+.hamburger {
+    display: none;
+    cursor: pointer;
+    width: 30px;
+    height: 20px;
+    position: relative;
+    z-index: 100;
+}
+
+.hamburger span {
+    display: block;
+    position: absolute;
+    height: 3px;
+    width: 100%;
+    background: var(--white);
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+.hamburger span:nth-child(1) { top: 0; }
+.hamburger span:nth-child(2) { top: 8px; }
+.hamburger span:nth-child(3) { top: 16px; }
+
+.hamburger.active span:nth-child(1) {
+    transform: rotate(45deg);
+    top: 8px;
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg);
+    top: 8px;
 }
 
 .nav-links {
@@ -63,24 +104,32 @@ header {
 
 /* Hero Section */
 .hero-section {
-    background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('../images/hero-bg.jpg');
+    background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('../images/annunciation.jpg');
     background-size: cover;
     background-position: center;
-    height: 60vh;
+    height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     color: var(--white);
+    padding-top: 60px;
+}
+
+.hero-content {
+    max-width: 800px;
+    padding: 0 20px;
 }
 
 .hero-content h1 {
     font-size: 2.5rem;
     margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
 }
 
 .hero-content p {
     font-size: 1.2rem;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
 }
 
 /* Featured Content */
@@ -138,18 +187,34 @@ footer {
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    .main-nav {
-        flex-direction: column;
-        text-align: center;
+    .hamburger {
+        display: block;
     }
 
     .nav-links {
-        margin-top: 1rem;
+        position: fixed;
+        top: 0;
+        right: -100%;
+        height: 100vh;
+        width: 100%;
+        background: var(--primary-color);
         flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transition: right 0.3s ease;
+        z-index: 99;
+    }
+
+    .nav-links.active {
+        right: 0;
     }
 
     .nav-links li {
-        margin: 0.5rem 0;
+        margin: 1.5rem 0;
+    }
+
+    .nav-links li a {
+        font-size: 1.2rem;
     }
 
     .hero-content h1 {
